@@ -1,0 +1,36 @@
+<p>home works!</p>
+
+<p *ngIf="estaCargando; else templateNoCarga">
+  Cargando..
+</p>
+<ng-template #templateNoCarga>
+<div class="container-fluid">
+    <h1 class="mb-3">
+      Tabla de usuarios
+    </h1>
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre completo</th>
+          <th>E-mail</th>
+          <th>Edad</th>
+          <th>Curso</th>
+          <th>Promedio</th>
+          <th>Cumpleaños</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios; let i = index" [ngClass]="usuario.averageGrades > 6 ? 'table-success' : '' " >
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.firstName}} {{usuario.lastName | uppercase }}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.age}}</td>
+            <td>{{usuario.course}}</td>
+            <td>{{usuario.averageGrades}}</td>
+            <td>{{usuario.birthdate | date:'shortDate'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
